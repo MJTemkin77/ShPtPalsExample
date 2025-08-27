@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sh-pt-pals-example-client-side-solution",
+    "id": "f21f4408-a91e-433b-8583-4a113b9bee44",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "sh-pt-pals-example description"
+      },
+      "longDescription": {
+        "default": "sh-pt-pals-example description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "sh-pt-pals-example Feature",
+        "description": "The feature that activates elements of the sh-pt-pals-example solution.",
+        "id": "31a241eb-5d21-4756-a1f8-1dd8caab14ea",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/sh-pt-pals-example.sppkg"
+  }
+}

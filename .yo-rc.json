@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": false,
+    "nodeVersion": "22.18.0",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "sh-pt-pals-example",
+    "libraryId": "f21f4408-a91e-433b-8583-4a113b9bee44",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "sh-pt-pals-example",
+    "solutionShortDescription": "sh-pt-pals-example description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
