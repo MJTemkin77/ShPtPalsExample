@@ -18,11 +18,12 @@ import { ICity } from '../../data/ICity';
 
 export interface IConsumerWebPartProps {
   description: string;
-  city:DynamicProperty<ICity>;
+  city: DynamicProperty<ICity>;
+  country: DynamicProperty<ICity>;
 }
 
-export default class ConsumerWebPart extends 
-BaseClientSideWebPart<IConsumerWebPartProps> {
+export default class ConsumerWebPart extends
+  BaseClientSideWebPart<IConsumerWebPartProps> {
 
   //private _isDarkTheme: boolean = false;
   //private _environmentMessage: string = '';
@@ -32,14 +33,15 @@ BaseClientSideWebPart<IConsumerWebPartProps> {
       Consumer,
       {
         description: this.properties.description,
-        city:this.properties.city
+        city: this.properties.city,
+        country: this.properties.country
       }
     );
 
     ReactDom.render(element, this.domElement);
   }
 
-  
+
 
 
 
@@ -78,13 +80,25 @@ BaseClientSideWebPart<IConsumerWebPartProps> {
           header: {
             description: strings.PropertyPaneDescription
           },
-         groups: [
+          groups: [
             {
               groupFields: [
                 PropertyPaneDynamicFieldSet({
-                  label: 'Select event source',
+                  label: 'Select event source for City',
                   fields: [
                     PropertyPaneDynamicField('city', {
+                      label: 'Event source'
+                    })
+                  ]
+                })
+              ]
+            },
+            {
+              groupFields: [
+                PropertyPaneDynamicFieldSet({
+                  label: 'Select event source for Country',
+                  fields: [
+                    PropertyPaneDynamicField('country', {
                       label: 'Event source'
                     })
                   ]
