@@ -22,7 +22,9 @@ export default class Source extends React.Component<ISourceProps, ISourceState> 
     this.selectedCity = 0;
     this.state = {
       cities: [],
-      city: ""
+      city: "",
+      countries: [],
+      country: ""
     };
   }
 
@@ -31,7 +33,10 @@ export default class Source extends React.Component<ISourceProps, ISourceState> 
       cities: [{ key: 'chennai', text: 'Chennai' },
       { key: 'mumbai', text: 'Mumbai' },
       { key: 'london', text: 'London' },
-      { key: 'paris', text: 'Paris' }]
+      { key: 'paris', text: 'Paris' }],
+      countries: [{ key: 'India', text: 'India' },
+      { key: 'USA', text: 'USA' },
+      { key: 'UK', text: 'UK' }]
     });
   }
 
@@ -50,7 +55,14 @@ export default class Source extends React.Component<ISourceProps, ISourceState> 
           onChanged={(_e, selectedCity : number) => {
             this.props.onCityChanged(this.state.cities[selectedCity]);
           }}
-          
+        />
+        <Dropdown
+          label="Country"
+          options={this.state.countries}
+          styles={dropdownStyles}
+          onChanged={(_e, selectedCountry : number) => {
+            this.props.onCountryChanged(this.state.countries[selectedCountry]);
+          }}
         />
       </div>
     );

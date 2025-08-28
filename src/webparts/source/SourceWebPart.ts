@@ -3,6 +3,7 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
+  PropertyPaneDropdown,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
@@ -28,6 +29,8 @@ implements IDynamicDataCallables {
   //private _environmentMessage: string = '';
 
  private _selectedCity: ICity;
+ private _selectedCountry: ICity;
+ 
 
   private onCityChange = (city: ICity): void => {
     alert(city.key);
@@ -36,11 +39,23 @@ implements IDynamicDataCallables {
     this.context.dynamicDataSourceManager.notifyPropertyChanged('city');
   }
 
+
+  private onCountryChange = (country: ICity): void => {
+    alert(country.key);
+    
+    this._selectedCountry = country;
+    this.context.dynamicDataSourceManager.notifyPropertyChanged('country');
+  }
+
     public getPropertyDefinitions(): ReadonlyArray<IDynamicDataPropertyDefinition> {
     return [
       {
         id: 'city',
         title: 'City'
+      },
+       {
+        id: 'country',
+        title: 'Country'
       }
     ];
   }
@@ -54,6 +69,9 @@ implements IDynamicDataCallables {
       
       return this._selectedCity ? {key : this._selectedCity.key,text : this._selectedCity.text} : {key:"", text:""};
     }
+    else if(propertyId === "country"){
+      return this._selectedCountry ? {key : this._selectedCountry.key,text : this._selectedCountry.text} : {key:"", text:""};
+    }
 
     throw new Error('Bad property id');
   }
@@ -66,7 +84,8 @@ implements IDynamicDataCallables {
         
         description: this.properties.description,
         //onCityChanged: this.onCityChange.bind(this)
-        onCityChanged: this.onCityChange
+        onCityChanged: this.onCityChange,
+        onCountryChanged: this.onCountryChange
       }
     );
 
@@ -107,7 +126,20 @@ implements IDynamicDataCallables {
                   label: strings.DescriptionFieldLabel
                 })
               ]
-            }
+            },
+            {
+              groupName: strings.CountryFieldLabel,
+              groupFields: [
+                PropertyPaneDropdown('CountryDropDown', {
+                  label: 'Country',
+                  options: [
+                    { key: 'India', text: 'India' },
+                    { key: 'USA', text: 'USA' },
+                    { key: 'UK', text: 'UK' }
+                  ], selectedKey: 'India'
+                })
+              ]
+            },
           ]
         }
       ]
